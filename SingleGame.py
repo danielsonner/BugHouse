@@ -1,4 +1,6 @@
 class SingleGame(object):
+  """ Represents a board on which part of a game of bughouse
+  is being played on."""
   def __init__(self, player1, player2, board, whoseTurn = True):
     self.player1 = player1
     self.player2 = player2

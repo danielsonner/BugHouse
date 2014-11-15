@@ -1,7 +1,8 @@
 from abc import ABCMeta, abstractmethod
 
 class Piece(object):
-  """Represents a piece"""
+  """Abstract class that represents a piece that has a color and the 
+     ability to check if its move is valid"""
   
   __metaclass__ = ABCMeta
   
@@ -17,6 +18,9 @@ class Piece(object):
 
   @abstractmethod
   def validMove(self, startLoc, endLoc):
+    """ Returns whether the piece's move is a valid shape.  Does not
+    take into account things such as pieces in the way but just looks
+    at the general shape of the movement."""
     raise NotImplementedError("implement valid move")
     
   def getColor(self):

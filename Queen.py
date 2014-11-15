@@ -8,6 +8,8 @@ class Queen(Piece):
     return False
     
   def moveLikeRook(self, startLoc, endLoc):
+    """ Returns True if the piece can move like a rook from start
+        to end location (False is moving like bishop)"""
     if startLoc[0] == endLoc[0] or startLoc[1] == endLoc[1]:
       return True
     return False

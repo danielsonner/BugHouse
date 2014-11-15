@@ -1,4 +1,5 @@
 class Player(object):
+  """ A bughouse game player who has a color and pieces and screenname"""
   def __init__(self, name, color, pieces=[]):
     self.name = name
     self.color = color
