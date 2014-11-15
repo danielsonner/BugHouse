@@ -5,7 +5,7 @@ class SingleGame(object):
     self.board = board
     self.whoseTurn = whoseTurn
     
-  def validMove(self, start, end):
+  def makeAndValidateMove(self, start, end):
     """
     inputs: start is a tuple x coord, y coord and end is tuple with end x, end y
     outputs: True if move is valid, else False
