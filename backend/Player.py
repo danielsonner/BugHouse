@@ -23,3 +23,7 @@ class Player(object):
     except ValueError:
       return False
     
+  def __str__ (self):
+    """ encoding player objecst as their list of pieces
+     so it's easy to send to server"""
+    return str(self.pieces)
