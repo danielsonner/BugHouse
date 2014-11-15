@@ -14,3 +14,4 @@ class Player(object):
       return True
     except ValueError:
       return False
+    
