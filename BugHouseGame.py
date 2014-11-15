@@ -11,7 +11,8 @@ class BugHouseGame(object):
     self.game2 = singleGame2
     
   def initializeNewGame(self):
-    
+    self.game1.newGame()
+    self.game2.newGame()
     
   def move(self, startLoc, endLoc, game1=True):
     """Attempts to make move. 

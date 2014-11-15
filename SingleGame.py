@@ -23,3 +23,6 @@ class SingleGame(object):
       self.player1.addPiece(piece)
     else:
       self.player2.addPiece(piece)
+      
+  def newGame(self):
+    self.board.setup()
