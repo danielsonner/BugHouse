@@ -155,6 +155,7 @@ class Board(object):
                     self.board[end[0]][end[1]] = Queen(True, promotedPawn = True)
                 if self.occupantColor(end) == False and end[1] == 7:
                     self.board[end[0]][end[1]] = Queen(False, promotedPawn = True)
+        assert not self.threatened(self.findKing())
         return returnValue
 
     
@@ -190,15 +191,36 @@ class Board(object):
     def threatened(self, coord):
         """Determines whether a piece at coord is threatened by an enemy piece"""
         threatened = False
+        storage = self.occupant(coord)
+        self.board[coord[0]][coord[1]] = None #removes any potential piece at coord, so it does not erroneously affect whether the square is threatened
         allPieceLocations = self.pieceLocations()
         enemyLocations = filter (lambda x: not self.occupantColor(x) == piece.getColor(), allPieces)
         for loc in enemyLocations:
-            if self.validMove(loc, end):
+            if self.validMove(loc, coord):
                 threatened = True
+        self.board[coord[0]][coord[1]] = storage #restores coord its value
         return threatened
 
+    def findThreats(self, coord):
+        """Returns the location of the piece threatening a coord"""
+        threatLocations = []
+        storage = self.occupant(coord)
+        self.board[coord[0]][coord[1]] = None #removes any potential piece at coord, so it does not erroneously affect whether the square is threatened
+        allPieceLocations = self.pieceLocations()
+        enemyLocations = filter (lambda x: not self.occupantColor(x) == piece.getColor(), allPieces)
+        for loc in enemyLocations:
+            if self.validMove(loc, coord):
+                threatLocations.append(loc)
+        self.board[coord[0]][coord[1]] = storage #restores coord its value
+        return threatLocations
 
-
+    def findKing(self, color):
+        locations = self.pieceLocations()
+        throne = None
+        for loc in locations:
+            if isinstance(self.occupant(loc), King) and self.occupantColor(loc) == color:
+                throne = loc
+        return throne
 
     def isSquareEmpty(self, coord):
         """checks if a square is empty"""
