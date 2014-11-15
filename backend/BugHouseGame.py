@@ -13,7 +13,7 @@ class BugHouseGame(object):
     
   def initializeNewGame(self):
     self.game1 = SingleGame(Player('name', Piece.WHITE, 0),Player('name', Piece.BLACK, 1),Board())
-    self.game2 = SingleGame(Player('name', Piece.BLACK, 2),Player('name', Piece.WHITE, 3),Board())
+    self.game2 = SingleGame(Player('name', Piece.WHITE, 2),Player('name', Piece.BLACK, 3),Board())
     
   def inputFromFrontEndParse(self, x_init, y_init, x_fin, y_fin, playerNumber):
     if (self.game1.player1.playerNum == playerNumber or 
@@ -22,6 +22,13 @@ class BugHouseGame(object):
     else:
       g1=False
     self.move((x_init,y_init),(x_fin,y_fin),game1=g1)
+    
+  def sendOutData(self):
+    """encoded: [[O's que, 01 board, 1s que], [2's, 23board, 3]]"""
+    encoded = []
+    encoded.append([self.game1.player1, self.game1.board, self.game1.player2])
+    encoded.append([self.game2.player1, self.game2.board, self.game2.player2])
+    return str(encoded)
     
   def move(self, startLoc, endLoc, game1=True):
     """Attempts to make move. 
