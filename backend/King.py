@@ -5,6 +5,9 @@ class King(MovedPiece):
   def validMove(self,startLoc,endLoc):
     if abs(startLoc[0] - endLoc[0]) <= 1 or abs(startLoc[1] - endLoc[1]) <= 1:
       return True
+    # castling
+    elif not self.movedOnce and abs(startLoc[0]-endLoc[0]) == 2:
+      return True
     return False
     
   def __str__(self):
