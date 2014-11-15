@@ -7,4 +7,4 @@ class Rook(MovedPiece):
     return False
     
   def __str__(self):
-    return Piece.__str__(self).'rook'
+    return Piece.__str__(self).'Rook'

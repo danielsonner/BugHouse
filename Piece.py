@@ -32,6 +32,6 @@ class Piece(object):
     
   def __str__(self):
     if self.color == self.WHITE:
-      return "white"
+      return "White"
     else:
-      return "black"
+      return "Black"

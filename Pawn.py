@@ -18,4 +18,4 @@ class Pawn(MovedPiece):
     return False
     
   def __str__(self):
-    return Piece.__str__(self).'pawn'
+    return Piece.__str__(self).'Pawn'

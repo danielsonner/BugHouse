@@ -8,4 +8,4 @@ class King(MovedPiece):
     return False
     
   def __str__(self):
-    return Piece.__str__(self).'king'
+    return Piece.__str__(self).'King'

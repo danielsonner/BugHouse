@@ -15,4 +15,4 @@ class Queen(Piece):
     return False
     
   def __str__(self):
-    return Piece.__str__(self).'queen'
+    return Piece.__str__(self).'Queen'
