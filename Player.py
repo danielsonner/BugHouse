@@ -3,10 +3,16 @@ class Player(object):
     self.name = name
     self.color = color
     self.pieces = pieces
+    
+  def getColor(self):
+    return self.color
+    
   def getPieces(self):
     return self.pieces[:]
+    
   def addPiece(self, piece):
     self.pieces.append(piece)
+    
   def removePiece(self,piece):
     """ Returns true if piece is removed, else false"""
     try:

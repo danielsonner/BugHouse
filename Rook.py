@@ -5,3 +5,6 @@ class Rook(MovedPiece):
     if startLoc[0] == endLoc[0] or startLoc[1] == endLoc[1]:
       return True
     return False
+    
+  def __str__(self):
+    return 'R'

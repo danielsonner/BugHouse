@@ -16,3 +16,6 @@ class Pawn(MovedPiece):
       elif start[0] - end[0] == -2 and not self.moved:
         return True
     return False
+    
+  def __str__(self):
+    return 'P'
