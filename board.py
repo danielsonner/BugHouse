@@ -118,10 +118,21 @@ class Board(object):
                     if not (not self.isSquareEmpty(end)) and (self.occupantColor(end) == self.occupantColor(start)):
                         valid = False
             if isinstance(piece, King): #checks if King is moving into check
-                allPieceLocations = self.pieceLocations()
-                enemyLocations = filter (lambda x: not self.occupantColor(x) == piece.getColor(), allPieces)
-                for loc in enemyLocations:
-                    if self.validMove(loc, end):
+                if piece.getColor() == Piece.WHITE:
+                    if end[0]-start[0] == 2: 
+                        if not whiteKingRook.movedOnce() and self.isValidMove(start, (end[0]-1, end[1])):
+                            valid = False
+                    elif start[0] - end[0] == 2:
+                        if not whiteQueenRook.movedOnce() and self.isValidMove(start (end[0]+1, end[1])):
+                            valid = False
+                if piece.getColor() == Piece.BLACK:
+                     if end[0]-start[0] == 2: 
+                        if not blackKingRook.movedOnce() and self.isValidMove(start, (end[0]-1, end[1])):
+                            valid = False
+                     elif start[0] - end[0] == 2:
+                        if not blackQueenRook.movedOnce() and self.isValidMove(start (end[0]+1, end[1])):
+                            valid = False
+                if self.threatened(end):
                         valid = False
 
         return valid
@@ -174,6 +185,18 @@ class Board(object):
                     legal = False
         return legal
 
+    def threatened(self, coord):
+        """Determines whether a piece at coord is threatened by an enemy piece"""
+        threatened = False
+        allPieceLocations = self.pieceLocations()
+        enemyLocations = filter (lambda x: not self.occupantColor(x) == piece.getColor(), allPieces)
+        for loc in enemyLocations:
+            if self.validMove(loc, end):
+                threatened = True
+        return threatened
+
+
+
 
     def isSquareEmpty(self, coord):
         """checks if a square is empty"""
@@ -191,7 +214,11 @@ class Board(object):
                     locList.append((i, j))
         return locList
 
-    def occupantType(self, coord):
+    def occupant(self, coord):
+        """Returns the value stored at coord"""
+        return self.board[coord[0]][coord[1]]
+
+    def occupantType(self, coo1rd):
         """Returns the the type of the piece at coord"""
         return type(self.board[coord[0]][coord[1]])
 
