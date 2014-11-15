@@ -11,4 +11,4 @@ class Bishop(Piece):
     return (endLoc[1]-startLoc[1])/(endLoc[0] - startLoc[0])
     
   def __str__(self):
-    return 'B'
+    return Piece.__str__(self).'bishop'

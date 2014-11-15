@@ -9,4 +9,4 @@ class Knight(Piece):
     return False
     
   def __str__(self):
-    return 'N'
+    return Piece.__str__(self).'knight'

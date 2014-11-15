@@ -29,3 +29,9 @@ class Piece(object):
     
   def getColor(self):
     return self.color
+    
+  def __str__(self):
+    if self.color == self.WHITE:
+      return "white"
+    else:
+      return "black"
