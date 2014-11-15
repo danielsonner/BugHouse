@@ -2,6 +2,8 @@ class Board(object):
     """This class represents a chess board"""
     board = [[None]*8]*8
 
+    def __init__(self):
+      self.setup()
 
     def  setup(self):
         """Sets up a board for the beginning of a game"""
