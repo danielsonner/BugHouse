@@ -3,6 +3,8 @@ from abc import ABCMeta, abstractmethod
 class Piece(object):
   """Abstract class that represents a piece that has a color and the 
      ability to check if its move is valid"""
+  WHITE = True
+  BLACK = False
   
   __metaclass__ = ABCMeta
   

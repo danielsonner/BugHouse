@@ -10,6 +10,9 @@ class BugHouseGame(object):
     self.game1 = singleGame1
     self.game2 = singleGame2
     
+  def initializeNewGame(self):
+    
+    
   def move(self, startLoc, endLoc, game1=True):
     """Attempts to make move. 
        inputs: startLoc and endLoc are tuples with coordinates x,y
