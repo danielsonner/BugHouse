@@ -7,7 +7,7 @@ class Pawn(Piece):
     self.color = color
     self.moved = moved
   
-  def whereCanIMove(self,startLoc,endLoc):
+  def validMove(self,startLoc,endLoc):
     if abs(endLoc[0] - startLoc[0]) > 1:
       return False # moved too far to a side
     if self.color:
