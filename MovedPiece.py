@@ -20,3 +20,9 @@ class MovedPiece(Piece):
       self.moved = True
     else:
       self.movedTwice = True
+      
+  def movedOnce(self):
+    return self.moved
+  
+  def movedTwice(self):
+    return self.movedTwice
