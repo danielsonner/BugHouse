@@ -1,24 +1,6 @@
-from Piece import Piece
+from MovedPiece import MovedPiece
 
-class Pawn(Piece):
-  
-  def __init__(self,color, moved=False, movedTwice=False):
-    """ color is 0 for white and 1 black"""
-    self.color = color
-    self.moved = moved
-    self.movedTwice = movedTwice
-  
-  def __eq__(self, other):
-    oldEq = Piece.__eq__(self, other)
-    if oldEq and self.moved == other.moved:
-      return True
-    return False
-  
-  def move(self):
-    if (self.moved == False):
-      self.moved = True
-    else:
-      self.movedTwice = True
+class Pawn(MovedPiece):
   
   def validMove(self,startLoc,endLoc):
     if abs(endLoc[0] - startLoc[0]) > 1:
