@@ -8,13 +8,16 @@ class SingleGame(object):
   def makeAndValidateMove(self, start, end):
     """
     inputs: start is a tuple x coord, y coord and end is tuple with end x, end y
-    outputs: True if move is valid, else False
+    outputs: Piece captured if one is captured, else None if no piece captrued
+    throws: AssertionError if the move is invalid.  Move will not be executed.
     """
-    if self.board.occupantColor(start) != whoseTurn:
-      return False
+    assert(self.board.occupantColor(start) == whoseTurn)
+    pieceCaptured = self.board.move(start,end)
+    return pieceCaptured
+    
+  def addPiece(self, piece):
+    """ gives a piece to the appropriate player based on color"""
+    if self.player1.getColor() == piece.getColor():
+      self.player1.addPiece(piece)
     else:
-      # in some cases board throws assertion error if move is invalid
-      try: 
-        return self.board.move(start,end)
-      except AssertionError:
-        return False
+      self.player2.addPiece(piece)
