@@ -8,6 +8,12 @@ class Piece(object):
   def __init__(self,color):
     """ color is True for white and False for black"""
     self.color = color
+    
+  def __eq__(self, other):
+      if self.color == other.color and type(self) == type(other):
+          return True
+      else:
+          return False
 
   @abstractmethod
   def validMove(self, startLoc, endLoc):
