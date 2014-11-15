@@ -1,4 +1,5 @@
 from MovedPiece import MovedPiece
+from Pawn import Pawn
 
 class BugHouseGame(object):
   """ A Bug House Game is the highest level object we have. 
@@ -23,6 +24,9 @@ class BugHouseGame(object):
         gameNotPlaying = self.game1
       capturedPiece = gamePlaying.makeAndValidateMove(startLoc,endLoc)
       if capturedPiece:
+        # if it was a promoted pawn, make it back into a pawn
+        if capturedPiece.promotedPawn:
+          capturedPiece = Pawn()
         # captured pieces are counted as having moved already
         if isinstance(capturedPiece, MovedPiece):
           capturedPiece.move()

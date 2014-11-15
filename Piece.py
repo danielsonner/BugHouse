@@ -6,9 +6,11 @@ class Piece(object):
   
   __metaclass__ = ABCMeta
   
-  def __init__(self,color):
-    """ color is True for white and False for black"""
+  def __init__(self,color,promotedPawn=False):
+    """ color is True for white and False for black.  
+        promotedPawn if the piece was a pawn but has now been promoted"""
     self.color = color
+    self.promotedPawn = promotedPawn
     
   def __eq__(self, other):
       if self.color == other.color and type(self) == type(other):
