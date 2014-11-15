@@ -21,7 +21,21 @@ class BugHouseGame(object):
       g1=True
     else:
       g1=False
-    self.move((x_init,y_init),(x_fin,y_fin),game1=g1)
+    # if we are dropping a piece
+    if x_init == None:
+      #y_init is actually an index of where the piece is in a player object
+      if playerNumber == 0:
+        piece = self.game1.player1.getPieces[y_init]
+      elif playerNumber == 1:
+        piece = self.game1.player2.getPieces[y_init]
+      elif playerNumber == 2:
+        piece = self.game2.player1.getPieces[y_init]
+      else:
+        piece = self.game2.player2.getPieces[y_init]
+      self.move(piece,(x_fin,y_fin),game1=g1)
+    # otherwise it's a normal move
+    else:
+      self.move((x_init,y_init),(x_fin,y_fin),game1=g1)
     
   def sendOutData(self):
     """encoded: [[O's que, 01 board, 1s que], [2's, 23board, 3]]"""
